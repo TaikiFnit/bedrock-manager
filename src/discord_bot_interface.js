@@ -8,6 +8,7 @@ const token = process.env.discord_token;
 const client = new Discord.Client();
 const command_name = /\/fnit/;
 const input_piper_port = process.env.input_piper_port;
+const channel = process.env.target_channel;
 
 
 client.on('message', async message => {
@@ -22,7 +23,7 @@ client.on('message', async message => {
         avatar: message.author.avatar
     };
 
-    if (message.content.match(command_name)) {
+    if (message.content.match(command_name) && message.channel.name == channel) {
         // 先頭の/command_name を削除
         const [_, ...directives] = message.content.split(' ');
         const directivesString = directives.join(' ');
