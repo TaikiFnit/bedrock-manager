@@ -28,6 +28,11 @@ client.on('message', async message => {
         const [_, ...directives] = message.content.split(' ');
         const directivesString = directives.join(' ');
 
+        if(!is_permitted_command(directives)) {
+            await message.reply('Operation not permitted');
+            return;
+        }
+
         const response = await axios.post(`http://localhost:${input_piper_port}/command`, {
             command: directivesString
         }).catch(async (err) => {
@@ -40,5 +45,21 @@ client.on('message', async message => {
         }
     }
 });
+
+function is_permitted_command(directives) {
+    // whitelistのみpass
+    if(directives[0] !== 'whitelist') {
+        return false;
+    }
+
+    // whitelist add fnit 119
+    // 名前間のスペース数を最大1ことするなら, directivesのlengthは4
+    // 4を超える場合, whitelist以外のcommandが含まれている可能性あり. のでfalse
+    if(directives.length > 4) {
+        return false;
+    }
+
+    return true;
+}
 
 client.login(token);
