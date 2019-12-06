@@ -2,6 +2,9 @@ const express = require('express');
 const axios = require('axios');
 const log = require('./lib/logSubscribeManager');
 
+require('dotenv').config();
+const manager_port = process.env.output_piper_port;
+
 /* Express */
 const app = express();
 
@@ -14,7 +17,7 @@ app.post('/log', async (req, res) => {
     return res.send('ok');
 });
 
-app.listen(10002);
+app.listen(manager_port);
 
 /* web hook sender */
 log.subscribe((log) => {
