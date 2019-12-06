@@ -1,15 +1,11 @@
 const readline = require('readline').createInterface(process.stdin, process.stdout);
 const express = require('express');
-require('dotenv').config();
-const port = process.env.input_piper_port;
-
 
 /* Standard Input */
 // serverへの標準入力へpipe
 readline.on('line',function(str){
     console.log(str);
 });
-
 
 /* Express */
 const app = express();
@@ -22,6 +18,6 @@ app.post('/command', async (req, res) => {
     return res.send('ok');
 });
 
-app.listen(port);
+app.listen(10001);
 
 
