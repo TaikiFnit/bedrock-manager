@@ -35,11 +35,7 @@ client.on('message', async message => {
             await message.reply(`Err. ${err}`);
         });
 
-        console.log('response');
-        console.log(response);
-
         if (response && response.status === 200) {
-            console.log('ok');
             await message.reply(response.data);
         }
     }
