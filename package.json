@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run discord & npm run manager",
+    "start": "npm run discord & npm run manager & npm run backup",
     "test": "npm run input & npm run discord",
     "input": "node src/standard_input_piper.js",
     "output": "node src/standard_output_piper.js",
     "discord": "node src/discord_bot_interface.js",
-    "manager": "node src/output_manager.js"
+    "manager": "node src/output_manager.js",
+    "backup": "node src/backup_manager.js"
   },
   "repository": {
     "type": "git",
