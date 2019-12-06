@@ -22,15 +22,10 @@ app.listen(manager_port);
 
 /* web hook sender */
 logSubscriber.push((log) => {
-    console.log('webhook');
-    console.log(webhook_url);
-    console.log(!webhook_url.match(/^http.*$/));
     if (!webhook_url.match(/^http.*$/)) {
         return;
     }
 
-    console.log('subscriber');
-    console.log(log);
     const data = {
         content: log
     };
