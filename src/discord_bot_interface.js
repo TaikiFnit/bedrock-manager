@@ -48,7 +48,7 @@ client.on('message', async message => {
 
 function is_permitted_command(directives) {
     // whitelistのみpass
-    if(!(directives[0] === 'whitelist' || directives[0] === 'list')) {
+    if(!(directives[0] === 'whitelist' || directives[0] === 'list' || directives[0] === 'say')) {
         return false;
     }
 
