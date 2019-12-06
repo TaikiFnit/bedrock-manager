@@ -3,10 +3,11 @@ const axios = require('axios');
 require('dotenv').config();
 const webhook_url = process.env.discord_webhook;
 
+do_backup();
+
 setInterval(() => {
     console.log('interval 1 day');
     do_backup();
-
 }, 1000 * 60 * 60 * 24);
 
 function do_backup() {
