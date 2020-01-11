@@ -12,7 +12,7 @@ const channel = process.env.target_channel;
 
 
 client.on('message', async message => {
-    if(message.author.bot){
+    if(client.user.id === message.author.id){
         return;
     }
 
