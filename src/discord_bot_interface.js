@@ -16,13 +16,6 @@ client.on('message', async message => {
         return;
     }
 
-    const author = {
-        id: message.author.id,
-        username: message.author.username,
-        discriminator: message.author.discriminator,
-        avatar: message.author.avatar
-    };
-
     if (message.content.match(command_name) && message.channel.name == channel) {
         // 先頭の/command_name を削除
         const [_, ...directives] = message.content.split(' ');
