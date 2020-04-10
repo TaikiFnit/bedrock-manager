@@ -10,6 +10,7 @@ npm i
 ```
 cp .env.example .env
 vim .env
+screen -S bedrock-manager
 npm start
 ```
 
@@ -18,5 +19,6 @@ npm start
 # on your bedrock dedicated server
 cp ./bedrock-manager/start.sh .
 chmod +x start.sh
+screen -S bedrock
 ./start.sh
 ```
