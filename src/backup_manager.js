@@ -16,7 +16,7 @@ function do_backup() {
         console.log(stdout);
     });
 
-    exec("find ../backups/ -mtime +7 -exec rm -f {} \;", (err, stdout, stderr) => {
+    exec("find ../backups/ -mtime +7 -exec rm -f {} \\;", (err, stdout, stderr) => {
 	if (err) { console.log(err); }
 	console.log(stdout);
     });
