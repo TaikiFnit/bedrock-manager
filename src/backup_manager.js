@@ -16,8 +16,14 @@ function do_backup() {
         console.log(stdout);
     });
 
+    exec("find ../backups/ -mtime +7 -exec rm -f {} \;", (err, stdout, stderr) => {
+	if (err) { console.log(err); }
+	console.log(stdout);
+    });
+
     const data = {
         content: 'Worlds is backed up.'
     };
-    axios.post(webhook_url, data)
+    axios.post(webhook_url, data);
+
 }
