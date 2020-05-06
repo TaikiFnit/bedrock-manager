@@ -14,21 +14,27 @@ app.use(express.urlencoded({ extended: true }));
 const logSubscriber = [];
 
 app.post('/log', async (req, res) => {
-    logSubscriber.forEach(subscriber => subscriber(req.body.log));
-    return res.send('ok');
+  logSubscriber.forEach(subscriber => subscriber(req.body.log));
+  return res.send('ok');
 });
 
 app.listen(manager_port);
 
 /* web hook sender */
 logSubscriber.push((log) => {
-    if (!webhook_url.match(/^http.*$/)) {
-        return;
-    }
+  if (!webhook_url.match(/^http.*$/)) {
+    return;
+  }
 
-    const data = {
-        content: log
-    };
-    axios.post(webhook_url, data)
+  // filtering log
+  if(log.match(/AutoCompaction/)) {
+    return;
+  }
+
+  const data = {
+    content: log
+  };
+
+  axios.post(webhook_url, data)
 });
 
