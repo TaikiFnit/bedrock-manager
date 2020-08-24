@@ -17,7 +17,7 @@ function do_backup() {
   });
 
   console.log('[INFO] Following command will be executed if backup_retention_period > 0.');
-  console.log(`find ../backups/ -mtime +${process.env.backup_retention_period} -exec rm -f {} \\;`);
+  console.log(`[INFO] find ../backups/ -mtime +${process.env.backup_retention_period} -exec rm -f {} \\;`);
   if(process.env.backup_retention_period > 0) {
     exec(`find ../backups/ -mtime +${process.env.backup_retention_period} -exec rm -f {} \\;`, (err, stdout, stderr) => {
     if (err) { console.log(err); }
